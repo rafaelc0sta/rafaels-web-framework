@@ -1,0 +1,14 @@
+{
+  "name": "rafaelwebframework",
+  "version": "1.0.0",
+  "description": "A small template to start web apps",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rafael Costa <rafael@rafaelcosta.me>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
