@@ -1,34 +1,16 @@
 #!/bin/sh
 
+APP_NAME="app_name"
 USER="runtime_user"
 NODE_ENV="production"
 APP_DIR="working_directory"
 NODE_APP="app.js"
 CONFIG_DIR="$APP_DIR"
-PID_DIR="$APP_DIR/pid"
-PID_FILE="$PID_DIR/app.pid"
-LOG_DIR="$APP_DIR/log"
-LOG_FILE="$LOG_DIR/app.log"
+PID_DIR="/var/run"
+PID_FILE="$PID_DIR/$APP_NAME.pid"
+LOG_DIR="/var/log/$APP_NAME"
+LOG_FILE="/app.log"
 NODE_EXEC=$(which node)
-APP_NAME="app_name"
-
-###############
-
-# REDHAT chkconfig header
-
-# chkconfig: - 58 74
-# description: node-app is the script for starting a node app on boot.
-### BEGIN INIT INFO
-# Provides: node
-# Required-Start:    $network $remote_fs $local_fs
-# Required-Stop:     $network $remote_fs $local_fs
-# Default-Start:     2 3 4 5
-# Default-Stop:      0 1 6
-# Short-Description: start and stop node
-# Description: Node process for app
-### END INIT INFO
-
-###############
 
 USAGE="Usage: $0 {start|stop|restart|status} [--force]"
 FORCE_OP=false
