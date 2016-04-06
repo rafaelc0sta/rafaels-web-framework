@@ -3,7 +3,10 @@ var fs = require('fs');
 var logger = require('./logger');
 var config = require('./config');
 
+// Reading configurations from file
 var translationsCacheTTL = config.translationsCacheTTL;
+
+// In-memory cache of strings file.
 var translationsCache = {};
 
 exports.stringForRequest = function (key, req) {
