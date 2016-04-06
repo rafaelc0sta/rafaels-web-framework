@@ -22,10 +22,19 @@ exports.stringForRequest = function (key, req) {
 exports.stringForLanguage = function (key, lang) {
   var strings = parseStrings();
 
-  var value = strings[lang][key];
-  if (value == null || value == undefined) {
-    logger.log(`Could not find value of string key '${key}' in language '${lang}'`, "WARNING");
+  var value;
+
+  var localStrings = strings[lang];
+
+  if (localStrings == null || localStrings == undefined) {
+    logger.log(`Could not find language '${lang}' (key: '${key}')`, "WARNING");
     value = strings.default[key];
+  } else {
+    value = strings[lang][key];
+    if (value == null || value == undefined) {
+      logger.log(`Could not find value of string key '${key}' in language '${lang}'`, "WARNING");
+      value = strings.default[key];
+    }
   }
 
   if (value == null || value == undefined) {
