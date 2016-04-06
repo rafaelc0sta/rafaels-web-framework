@@ -1,3 +1,4 @@
 {
-  "translationsCacheTTL": 10000
+  "translationsCacheTTL": 10000,
+  "port": 8080
 }

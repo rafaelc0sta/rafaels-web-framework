@@ -1,16 +1,14 @@
 var express     = require('express');
 var app         = express();
+
+var config      = require('./config');
+
 var renderer    = require('./renderer');
 var logger      = require('./logger');
+var router      = require('./router');
 
 renderer.register(app);
 
 app.use(logger.requestLogger);
-
-app.get('/*', function(req, res) {
-  res.render('index', {request: req});
-});
-
-
-
-app.listen(8080);
+router.route(app);
+app.listen(config.port);
