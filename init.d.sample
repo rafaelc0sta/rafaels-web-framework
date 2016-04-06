@@ -9,7 +9,7 @@ CONFIG_DIR="$APP_DIR"
 PID_DIR="/var/run"
 PID_FILE="$PID_DIR/$APP_NAME.pid"
 LOG_DIR="/var/log/$APP_NAME"
-LOG_FILE="/app.log"
+LOG_FILE="$LOG_DIR/app.log"
 NODE_EXEC=$(which node)
 
 USAGE="Usage: $0 {start|stop|restart|status} [--force]"
