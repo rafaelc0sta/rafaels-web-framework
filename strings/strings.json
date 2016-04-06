@@ -1,0 +1,10 @@
+{
+  "default": {
+    "website_title": "Default Language Title",
+    "desc": "Default language description"
+  },
+
+  "pt_BR": {
+    "desc": "pt_BR language description"
+  }
+}

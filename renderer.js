@@ -1,6 +1,7 @@
 var exports = module.exports = {};
 var fs = require("fs");
 const vm = require('vm');
+var translator = require("./translator");
 
 exports.register = function (app) {
   app.engine('ejs', function (filepath, options, callback) {
@@ -17,6 +18,8 @@ exports.render = function (filename, options) {
   if (options == undefined) {
     options = {};
   }
+
+  options.t = translator
 
   var templateFilename = 'default';
   if (options.template != undefined) {
