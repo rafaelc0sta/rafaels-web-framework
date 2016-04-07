@@ -1,6 +1,8 @@
 var express     = require('express');
 var app         = express();
 
+app.use('/static', express.static('static'));
+
 var config      = require('./config');
 
 var renderer    = require('./renderer');
@@ -10,8 +12,6 @@ var router      = require('./router');
 renderer.register(app);
 
 app.use(logger.requestLogger);
-
-app.use('/static', express.static('static'));
 
 router.route(app);
 app.listen(config.port);
