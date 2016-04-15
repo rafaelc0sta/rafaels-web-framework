@@ -24,6 +24,25 @@ task('build', function (params) {
 
   console.log('Started build of ' + projectName);
 
+  // Runs checks
+
+  try {
+    fs.statSync('.paquet-maker/control')
+  } catch (e) {
+    console.log("Missing files (control) ... Aborting!");
+    console.log("Tip: Running paquet-maker might solve it!");
+    return;
+  }
+
+  try {
+    fs.statSync('.paquet-maker/init.d')
+  } catch (e) {
+    console.log("Missing files (init.d)... Aborting!");
+    console.log("Tip: Running paquet-maker might solve it!");
+    return;
+  }
+
+
   // Sets the user that'll run the application
   var user = "root";
   var userDir;
@@ -63,7 +82,7 @@ task('build', function (params) {
     // Generates the control file and populates it.
     console.log("Adding init.d script");
     exec("mkdir -p " + initdDirectory);
-    exec("cp init.d.sample " + initdFile);
+    exec("cp .paquet-maker/init.d " + initdFile);
     exec("sed -i 's/app_name/" + projectName + "/g' " + initdFile);
 
     // Tiny hack to escape working directory
@@ -90,7 +109,7 @@ task('build', function (params) {
   // Generates the control file and populates it.
   console.log("Generating DEBIAN/control");
   exec("mkdir -p " + controlDirectory);
-  exec("cp control.sample " + controlDirectory + "/control");
+  exec("cp .paquet-maker/control " + controlDirectory + "/control");
   exec("sed -i 's/app_name/" + projectName + "/g' " + controlDirectory + "/control");
   exec("sed -i 's/app_tag/" + latestTag + "/g' " + controlDirectory + "/control");
   exec("sed -i 's/app_author/" + author + "/g' " + controlDirectory + "/control");
