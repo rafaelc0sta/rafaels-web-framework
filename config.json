@@ -1,4 +1,19 @@
 {
-  "translationsCacheTTL": 10000,
-  "port": 8080
+  "development": {
+    "translationsCacheTTL": 10000,
+    "port": 8080,
+    "database_url": "postgres://localhost/rafaelcosta"
+  },
+
+  "production": {
+    "translationsCacheTTL": 10000,
+    "port": 8080,
+    "database_url": "postgres://localhost/rafaelcosta"
+  },
+
+  "test": {
+    "translationsCacheTTL": 10000,
+    "port": 8080,
+    "database_url": "postgres://localhost/rafaelcosta"
+  }
 }
